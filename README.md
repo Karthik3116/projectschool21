@@ -62,17 +62,26 @@ HEATMAP_THRESHOLD=0.6
 # Node
 PORT=8001
 FLASK_PREDICT_URL=http://flask:5000/predict
-🐳 Running with Docker
-1. Build & Start Containers
-bash
- 
+
+
+
+---
+
+### 🐳 Running with Docker
+```markdown
+## 🐳 Running with Docker
+
+### 1. Build & Start Containers
+```bash
 docker-compose down -v --remove-orphans
 docker-compose build --no-cache
 docker-compose up -d
+
+
 2. Verify Containers
-bash
 
 docker ps
+
 You should see:
 
 flask_api → Flask backend (port 5000)
@@ -81,69 +90,76 @@ node_server → Node backend (port 8001)
 
 react_frontend → React app (port 3000)
 
-🌐 Accessing the Services
-Flask API (health check) → http://localhost:5000/health
 
-Node backend → http://localhost:8001/
+---
 
-React frontend → http://localhost:3000/
+### 🌐 Accessing the Services
+```markdown
+## 🌐 Accessing the Services
+- Flask API (health check) → [http://localhost:5000/health](http://localhost:5000/health)  
+- Node backend → [http://localhost:8001/](http://localhost:8001/)  
+- React frontend → [http://localhost:3000/](http://localhost:3000/)  
+
 
 🧪 Testing
-Upload an Image
-bash
 
+## 🧪 Testing
+
+### Upload an Image
+```bash
 curl -X POST http://localhost:8001/uploads \
   -F "image=@sample.jpg" \
   -F "Rn=AB1234" \
   -F "Pn=9876543210"
+
 Search by Registration Number
-bash
- 
 curl "http://localhost:8001/search?registrationNumber=AB1234"
+
 Get All Data (Table View)
-bash
- 
 curl http://localhost:8001/getdata
+
+
 Flask Health Check
-bash
- 
 curl http://localhost:5000/health
-🛠 Development Notes
-Large datasets & models are ignored via .gitignore
 
-To rebuild Flask (if model changes):
 
-bash
- 
-docker-compose build flask && docker-compose up -d flask
-To rebuild React frontend:
-
-bash
- 
-docker-compose build frontend && docker-compose up -d frontend
-Logs for Debugging
-bash
- 
-docker logs flask_api -f
-docker logs node_server -f
-docker logs react_frontend -f
-🧹 Cleanup
-Stop and remove everything:
-
-bash
- 
-docker-compose down -v --remove-orphans
-✅ With this setup, you can train, test, and deploy tyre defect detection seamlessly.
-
-yaml
- 
 
 ---
 
-Do you want me to also include **screenshots placeholders** (like “🖼 Upload Screen”, “📊 Results Table”) so that when you later run the frontend, you can just add them for GitHub presentation?
+### 🛠 Development Notes
+```markdown
+## 🛠 Development Notes
+
+- Large datasets & models are ignored via `.gitignore`  
+- If you change Flask model (`.h5`) → rebuild only Flask container:
+  ```bash
+  docker-compose build flask && docker-compose up -d flask
+
+
+If you modify React frontend → rebuild only frontend:
+
+docker-compose build frontend && docker-compose up -d frontend
+
+
+Logs for debugging:
+
+docker logs flask_api -f
+docker logs node_server -f
+docker logs react_frontend -f
 
 
 
 
+---
+
+### 🧹 Cleanup
+```markdown
+## 🧹 Cleanup
+
+Stop and remove everything:
+```bash
+docker-compose down -v --remove-orphans
 
 
+
+---
