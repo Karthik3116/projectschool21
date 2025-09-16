@@ -3,3 +3,6 @@ node_modules/
 .DS_Store
 .env
 
+# Ignore dataset folders
+Digital images of defective and good condition tyres/
+Tire Textures/
