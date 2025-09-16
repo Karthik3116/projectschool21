@@ -65,13 +65,13 @@ FLASK_PREDICT_URL=http://flask:5000/predict
 🐳 Running with Docker
 1. Build & Start Containers
 bash
-Copy code
+ 
 docker-compose down -v --remove-orphans
 docker-compose build --no-cache
 docker-compose up -d
 2. Verify Containers
 bash
-Copy code
+
 docker ps
 You should see:
 
@@ -91,22 +91,22 @@ React frontend → http://localhost:3000/
 🧪 Testing
 Upload an Image
 bash
-Copy code
+
 curl -X POST http://localhost:8001/uploads \
   -F "image=@sample.jpg" \
   -F "Rn=AB1234" \
   -F "Pn=9876543210"
 Search by Registration Number
 bash
-Copy code
+ 
 curl "http://localhost:8001/search?registrationNumber=AB1234"
 Get All Data (Table View)
 bash
-Copy code
+ 
 curl http://localhost:8001/getdata
 Flask Health Check
 bash
-Copy code
+ 
 curl http://localhost:5000/health
 🛠 Development Notes
 Large datasets & models are ignored via .gitignore
@@ -114,16 +114,16 @@ Large datasets & models are ignored via .gitignore
 To rebuild Flask (if model changes):
 
 bash
-Copy code
+ 
 docker-compose build flask && docker-compose up -d flask
 To rebuild React frontend:
 
 bash
-Copy code
+ 
 docker-compose build frontend && docker-compose up -d frontend
 Logs for Debugging
 bash
-Copy code
+ 
 docker logs flask_api -f
 docker logs node_server -f
 docker logs react_frontend -f
@@ -131,12 +131,12 @@ docker logs react_frontend -f
 Stop and remove everything:
 
 bash
-Copy code
+ 
 docker-compose down -v --remove-orphans
 ✅ With this setup, you can train, test, and deploy tyre defect detection seamlessly.
 
 yaml
-Copy code
+ 
 
 ---
 
