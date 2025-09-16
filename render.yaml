@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: projectschool21
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    envVars:
+      - key: FLASK_PORT
+        value: 5000
+      - key: NODE_PORT
+        value: 8000
+      - key: FLASK_PREDICT_URL
+        value: http://localhost:5000/predict
+      - key: VITE_API_BASE
+        value: http://localhost:8000
+      - key: MONGO_URI
+        sync: false  # Set manually in Render Dashboard (secure)
